@@ -35,10 +35,25 @@ function hello_elementor_child_scripts_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'hello_elementor_child_scripts_styles', 20 );
 
+/**
 add_filter( 'wp_nav_menu_items', 'add_extra_item_to_nav_menu', 10, 2 );
 function add_extra_item_to_nav_menu( $items, $args ) {
-	var_dump($items);
+
 	$items 	.= '<li><a href="#">Admin</a></li>';
 
     return $items;
 }
+*/
+
+// Conditional Nav Menu
+
+function wpc_wp_nav_menu_args( $args = '' ) {
+if( is_user_logged_in() ) { 
+    $args['menu'] = 'connecte';
+} else { 
+    $args['menu'] = 'Visiteur';
+} 
+    return $args;
+}
+add_filter( 'wp_nav_menu_args', 'wpc_wp_nav_menu_args' );
+
