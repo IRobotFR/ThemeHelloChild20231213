@@ -13,10 +13,65 @@ Tags: flexible-header, custom-colors, custom-menu, custom-logo, editor-style, fe
 */
 
 /* Add your custom styles here */
-.commander {
-	background: black;
-}
 
 body {
     max-width: 1440px;
 }
+
+#site-header {
+	padding-block-start: 0rem;
+	padding-block-end: 0rem;
+}
+
+.header-inner {
+	height: 80px;
+}
+.site-logo.show a {
+	margin-left: 30px;
+}
+
+#menu-item-92 a {
+	color: black;
+	font-family: syne;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 1.6rem 1.6rem 0rem 1.6rem;
+}
+
+#menu-item-91 a {
+	height: 80px;
+	background: #D2776A;
+	font-family: syne;
+	font-size: 16px;
+	font-weight: 700;
+	color: white;
+	padding: 1.6rem 3rem 0rem 3rem;
+}
+
+#menu-item-95 a {
+	color: black;
+	font-family: syne;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 1.6rem 1.6rem 0rem 1.6rem;
+}
+
+#menu-item-96 a {
+	color: black;
+	font-family: syne;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 1.6rem 2.5rem 0rem 1.6rem;
+}
+
+#menu-item-94 a {
+	font-family: syne;
+	font-size: 16px;
+	font-weight: 700;
+	height: 80px;
+	background: #D2776A;
+	color: white;
+	padding: 1.6rem 3rem 0rem 3rem;
+}
+
+
