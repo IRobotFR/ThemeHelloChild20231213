@@ -71,6 +71,9 @@ function wpc_wp_nav_menu_args( $args = '' ) {
 	add_filter( 'wp_nav_menu_args', 'wpc_wp_nav_menu_args' );
 
 
+
+// Debit widget pour affichage images posts
+
 	function hstngr_register_widget() {
 		register_widget( 'hstngr_widget' );
 		}
