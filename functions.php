@@ -71,9 +71,6 @@ function wpc_wp_nav_menu_args( $args = '' ) {
 	add_filter( 'wp_nav_menu_args', 'wpc_wp_nav_menu_args' );
 
 
-
-// Debit widget pour affichage images posts
-
 	function hstngr_register_widget() {
 		register_widget( 'hstngr_widget' );
 		}
@@ -84,8 +81,7 @@ function wpc_wp_nav_menu_args( $args = '' ) {
 		
 		function __construct() {
 	// widget ID + widget name + widget description
-			parent::__construct('hstngr_widget',
-			__('Hostinger Sample Widget', ' hstngr_widget_domain'),
+			parent::__construct('hstngr_widget', __('Hostinger Sample Widget', ' hstngr_widget_domain'),
 			array( 'description' => __( 'Hostinger Widget Tutorial', 'hstngr_widget_domain' ), )
 			);
 		}
@@ -106,6 +102,87 @@ function wpc_wp_nav_menu_args( $args = '' ) {
 	//         echo $args['after_widget'];
 	//     }
 	// // fin formulaire
+	
+	// debut formulaire client
+	
+	public function widget( $args, $instance ) {
+		var_dump(get_posts());
+	
+		extract($args);
+	
+	// Paramètres du widget – Je récupère les 4 articles les plus récents
+		$args = array('posts_per_page' => 4);
+	
+	// Récupération des articles dans la variable $lastposts
+		$lastposts = get_posts($args);
+	//    $thumburl = get_the_post_thumbnail($post->ID);
+	
+	// HTML AVANT WIDGET
+		echo $before_widget;
+	
+	// Titre du widget qui va s’afficher
+		echo $before_title."ARTICLES RECENTS".$after_title;
+	
+	// Boucle pour afficher les articles
+	echo '<ul>';
+	foreach ( $lastposts as $post ) : setup_postdata($post); ?>
+	<li><a href="<?php echo get_permalink($post->ID); ?>">
+	<?php echo $post->post_title; ?></a></li>
+	<?php endforeach;
+	echo '</ul>';   
+	
+	echo '<ul>';
+	foreach ( $lastposts as $post ) : setup_postdata($post); ?>
+	<li><a href="<?php echo get_permalink($post->ID); ?>">
+	<?php echo get_the_post_thumbnail($post->ID); ?>
+	<?php echo $post->post_title; ?>
+	<?php echo $post->post_title; ?></a></li>
+	<?php endforeach;
+	echo '</ul>';   
+	
+	
+		$posts = get_posts( array( 'posts_per_page' => 4 ) );
+		foreach ( $posts as $_post ) {
+		if ( has_post_thumbnail( $_post->ID ) ) {
+			echo '<a href="' . get_permalink( $_post->ID ) . '" title= "' . esc_attr( $_post->post_title ) . '">';
+			echo get_the_post_thumbnail( $_post->ID, 'thumbnail' );
+			echo $post->post_title;
+			echo '</a>';
+	
+		}
+	}
+	
+	?>
+	
+	
+	
+	
+	<form class="formulairedeuxcolonnes">
+			<h5 class="commandetitre5">Vos informations
+			</h5>
+			<p><label>Nom<br>
+	<span class="wpcf7-form-control-wrap" data-name="your-name"><input size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" value="" type="text" name="your-name"></span> </label>
+			</p>
+			<p><label>Prénom<br>
+	<span class="wpcf7-form-control-wrap" data-name="your-firstname"><input size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" value="" type="text" name="your-firstname"></span> </label>
+			</p>
+			<p><label>E-mail<br>
+	<span class="wpcf7-form-control-wrap" data-name="your-email"><input size="40" class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email" aria-required="true" aria-invalid="false" value="" type="email" name="your-email"></span> </label>
+			</p>
+			<h5 class="commandetitre5">Livraison
+			</h5>
+			<p><label>Adresse de livraison<br>
+	<span class="wpcf7-form-control-wrap" data-name="livraison"><input size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" value="" type="text" name="livraison"></span> </label>
+			</p>
+			<p><label>Code postal<br>
+	<span class="wpcf7-form-control-wrap" data-name="codepostal"><input size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" value="" type="text" name="codepostal"></span> </label>
+			</p>
+			<p><label>Ville<br>
+	<span class="wpcf7-form-control-wrap" data-name="ville"><input size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" value="" type="text" name="ville"></span> </label>
+			</p>
+	</form>
+	<?php
+		}
 	
 	// fin formulaire
 	
@@ -133,13 +210,4 @@ function wpc_wp_nav_menu_args( $args = '' ) {
 		}
 		
 		}
-
-
-
-
-
-
-
-
-
-
+	
