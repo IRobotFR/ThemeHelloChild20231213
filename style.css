@@ -80,89 +80,41 @@ Tags: flexible-header, custom-colors, custom-menu, custom-logo, editor-style, fe
 #form-field-Nom {
 	border: none;
 	border-radius: 8px;
+	height: 71px;
+	width: 383px;
 }
 
 #form-field-email {
 	border: none;
 	border-radius: 8px;
+	height: 71px;
+	width: 383px;
 }
 
 #form-field-6f0d50c {
 	border: none;
 	border-radius: 8px;
 	background-image: url();
+	width: 383px;
 }
 
 #Envoyer {
 	border:none;
+	width: 199px;
+	height: 55px;
 }
 
 
 /****** Formulaire Page Commander***********/
 
-
-.formulairecommande .commandetitre5 {
-	font-family: Syne;
-	font-size: 30px;
-	font-weight: 700;
-	color: white;
-	margin-top: 80px;
+.formcomnbr {
+	width: 39px;
+	height: 56px;
+	text-align: center;
+	border: none;
 }
 
-.formulairecommande .imagesetnombre {
-	display: flex;
-	flex-direction: row;
-	justify-content:space-between;
-}
 
-.imagesetnombre {
-	display: block;
-}
-
-#fraise {
-	width: 193px;
-	height: 128px;
-	background-image: url();
-}
-
-#pample {
-	width: 193px;
-	height: 128px;
-	background-image: url();
-}
-
-#framboise {
-	width: 193px;
-	height: 128px;
-	background-image: url();
-}
-
-#citron {
-	width: 193px;
-	height: 128px;
-	background-image: url();
-}
-#nbrfraise {
-	width: 80px;
-}
-
-#nbrpample {
-	width: 80px;
-}
-
-#nbrframboise {
-	width: 80px;
-}
-
-#nbrcitron {
-	width: 80px;
-}
-
-.formulairedeuxcolonnes {
-	display: flex;
-	flex-direction: column;
-	justify-content: left;
-}
 
 .formulairedeuxcolonnes label {
 	font-family: syne;
@@ -171,21 +123,25 @@ Tags: flexible-header, custom-colors, custom-menu, custom-logo, editor-style, fe
 	color: white;
 }
 
-#formulairecommande3 {
+.formulairecommande2 {
 	box-sizing: border-box;
-	width: 250px;
-	height: 40px;
-	background-color: #D2776A;
-	border: none;
+	width: 383px;
+	height: 71px;
+	background-color: #ffffff;
 	border-radius: 8px;
 }
 
-. wpcf7-spinner {
-	display: none;
+#nomformcomm {
+	box-sizing: border-box;
+	width: 383px;
+	height: 71px;
+	background-color: #ffffff;
+	border-radius: 8px;
 }
 
 #IDEnvoiCommande {
 	justify-content: center;
+	border: none;
 	border-radius: 6px;
 	background-color:#E0B9B4;
 	width: 198px;
@@ -194,4 +150,10 @@ Tags: flexible-header, custom-colors, custom-menu, custom-logo, editor-style, fe
 	font-family: Syne;
 	font-size: 15px;
 	color: white;
+}
+
+.boutonenvoyercommande {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

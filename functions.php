@@ -71,6 +71,7 @@ function wpc_wp_nav_menu_args( $args = '' ) {
 	add_filter( 'wp_nav_menu_args', 'wpc_wp_nav_menu_args' );
 
 
+
 	function hstngr_register_widget() {
 		register_widget( 'hstngr_widget' );
 		}
@@ -79,34 +80,18 @@ function wpc_wp_nav_menu_args( $args = '' ) {
 		
 		class hstngr_widget extends WP_Widget {
 		
-		function __construct() {
+	function __construct() {
 	// widget ID + widget name + widget description
-			parent::__construct('hstngr_widget', __('Hostinger Sample Widget', ' hstngr_widget_domain'),
-			array( 'description' => __( 'Hostinger Widget Tutorial', 'hstngr_widget_domain' ), )
-			);
-		}
+		parent::__construct('hstngr_widget', __('Hostinger Sample Widget', ' hstngr_widget_domain'),
+		array( 'description' => __( 'Hostinger Widget Tutorial', 'hstngr_widget_domain' ), )
+		);
+	}
 	
-	// // debut formulaire client
-	
-	//     public function widget( $args, $instance ) {
-	//         // $title = apply_filters( 'widget_title', $instance['title'] );
-	//         $title = '';
-	
-	//         echo $args['before_widget'];
-	
-	// //if title is present
-	//         if ( ! empty( $title ) )
-	//         echo $args['before_title'] . $title . $args['after_title'];
-	// //output
-	//         echo __( 'Hello, World from Tilo', 'hstngr_widget_domain' );
-	//         echo $args['after_widget'];
-	//     }
-	// // fin formulaire
 	
 	// debut formulaire client
 	
 	public function widget( $args, $instance ) {
-		var_dump(get_posts());
+	//    var_dump(get_posts());
 	
 		extract($args);
 	
@@ -121,66 +106,67 @@ function wpc_wp_nav_menu_args( $args = '' ) {
 		echo $before_widget;
 	
 	// Titre du widget qui va s’afficher
-		echo $before_title."ARTICLES RECENTS".$after_title;
+		echo $before_title."".$after_title;
 	
 	// Boucle pour afficher les articles
-	echo '<ul>';
-	foreach ( $lastposts as $post ) : setup_postdata($post); ?>
-	<li><a href="<?php echo get_permalink($post->ID); ?>">
-	<?php echo $post->post_title; ?></a></li>
-	<?php endforeach;
-	echo '</ul>';   
 	
-	echo '<ul>';
+	echo '<article>';
 	foreach ( $lastposts as $post ) : setup_postdata($post); ?>
-	<li><a href="<?php echo get_permalink($post->ID); ?>">
 	<?php echo get_the_post_thumbnail($post->ID); ?>
 	<?php echo $post->post_title; ?>
-	<?php echo $post->post_title; ?></a></li>
 	<?php endforeach;
-	echo '</ul>';   
-	
-	
-		$posts = get_posts( array( 'posts_per_page' => 4 ) );
-		foreach ( $posts as $_post ) {
-		if ( has_post_thumbnail( $_post->ID ) ) {
-			echo '<a href="' . get_permalink( $_post->ID ) . '" title= "' . esc_attr( $_post->post_title ) . '">';
-			echo get_the_post_thumbnail( $_post->ID, 'thumbnail' );
-			echo $post->post_title;
-			echo '</a>';
-	
-		}
-	}
+	echo '</article>';   
 	
 	?>
 	
 	
+	<form>
+	<div class="nombrefruits">
+		<input class="formcomnbr" type="txt" id="citron" name="citron" value="0">
+		<input class="formcomnbr" type="txt" id="framboise" name="framboise" value="0">
+		<input class="formcomnbr" type="txt" id="pamplemousse" name="pamplemousse" value="0">
+		<input class="formcomnbr" type="txt" id="fraise" name="fraise" value="0">
+	</div>
 	
-	
-	<form class="formulairedeuxcolonnes">
-			<h5 class="commandetitre5">Vos informations
-			</h5>
-			<p><label>Nom<br>
-	<span class="wpcf7-form-control-wrap" data-name="your-name"><input size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" value="" type="text" name="your-name"></span> </label>
+	<div class="formulairedeuxcolonnes">
+		<article>
+			<h3>Vos informations</h3>
+			<p><label>Nom<br />
+		<span><input size="40" class= "formulairecommande2" value="" type="text" name="nom-famille" id="nomformcomm" /></span>
 			</p>
-			<p><label>Prénom<br>
-	<span class="wpcf7-form-control-wrap" data-name="your-firstname"><input size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" value="" type="text" name="your-firstname"></span> </label>
+			<p><label>Prénom<br />
+			<span><input size="40" class= "formulairecommande2" value="" type="text" name="prenom" id="nomformcomm" /></span>
 			</p>
-			<p><label>E-mail<br>
-	<span class="wpcf7-form-control-wrap" data-name="your-email"><input size="40" class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email" aria-required="true" aria-invalid="false" value="" type="email" name="your-email"></span> </label>
+			<p><label>E-mail<br />
+			<span><input size="40" class= "formulairecommande2" value="" type="text" name="email" id="nomformcomm" /></span>
 			</p>
-			<h5 class="commandetitre5">Livraison
-			</h5>
-			<p><label>Adresse de livraison<br>
-	<span class="wpcf7-form-control-wrap" data-name="livraison"><input size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" value="" type="text" name="livraison"></span> </label>
+		</article>
+		<article>
+			<h3>Livraison</h3>
+			<p><label>Adresse de livraison<br />
+			<span><input size="40" class= "formulairecommande2" value="" type="text" name="nomderue" id="nomformcomm" /></span>
 			</p>
-			<p><label>Code postal<br>
-	<span class="wpcf7-form-control-wrap" data-name="codepostal"><input size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" value="" type="text" name="codepostal"></span> </label>
+			<p><label>Code postal<br />
+			<span><input size="40" class= "formulairecommande2" value="" type="text" name="codepostal" id="nomformcomm" /></span>
 			</p>
-			<p><label>Ville<br>
-	<span class="wpcf7-form-control-wrap" data-name="ville"><input size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" value="" type="text" name="ville"></span> </label>
+			<p><label>Ville<br />
+			<span><input size="40" class= "formulairecommande2" value="" type="text" name="ville" id="nomformcomm" /></span>
 			</p>
+	</div>
+	<div class="boutonenvoyercommande">
+			<p><input id="IDEnvoiCommande" type="submit" value="Envoyer" />
+			</p>
+	</article>
+	</div>
+	<div class="wpcf7-response-output" aria-hidden="true"></div>
 	</form>
+	<?php
+		if (isset($_POST['message'])) {
+			$retour = mail('destinataire@free.fr', 'Envoi depuis la page Contact', $_POST['message'], 'From: webmaster@monsite.fr' . "\r\n" . 'Reply-to: ' . $_POST['email']);
+			if($retour)
+				echo '<p>Votre message a bien été envoyé.</p>';
+		}
+		?>
 	<?php
 		}
 	
