@@ -72,6 +72,7 @@ function wpc_wp_nav_menu_args( $args = '' ) {
 
 
 
+
 	function hstngr_register_widget() {
 		register_widget( 'hstngr_widget' );
 		}
@@ -93,107 +94,71 @@ function wpc_wp_nav_menu_args( $args = '' ) {
 	public function widget( $args, $instance ) {
 	//    var_dump(get_posts());
 	
-		extract($args);
+	//    extract($args);
 	
 	// Paramètres du widget – Je récupère les 4 articles les plus récents
-		$args = array('posts_per_page' => 4);
+		$args = array('posts_per_page' => -1);
 	
 	// Récupération des articles dans la variable $lastposts
 		$lastposts = get_posts($args);
 	//    $thumburl = get_the_post_thumbnail($post->ID);
 	
-	// HTML AVANT WIDGET
-		echo $before_widget;
 	
-	// Titre du widget qui va s’afficher
-		echo $before_title."".$after_title;
 	
 	// Boucle pour afficher les articles
 	
-	echo '<article>';
+	echo '<form id="order-form" action="mailto:planty.drinks@gmail.com" method="post" enctype="text/plain"><div class="productimage">';
 	foreach ( $lastposts as $post ) : setup_postdata($post); ?>
-	<?php echo get_the_post_thumbnail($post->ID); ?>
-	<?php echo $post->post_title; ?>
+	<article>
+		<div class="product-info">
+			<?php echo get_the_post_thumbnail($post->ID); ?>
+			<div><h3><?php echo $post->post_title; ?> </h3></div>
+		</div>
+	<input class="formcomnbr" type="number" name="<?php echo $post->post_name; ?>" value="0">
+	</article>
 	<?php endforeach;
-	echo '</article>';   
+	echo '</div>';   
 	
 	?>
 	
 	
-	<form>
-	<div class="nombrefruits">
-		<input class="formcomnbr" type="txt" id="citron" name="citron" value="0">
-		<input class="formcomnbr" type="txt" id="framboise" name="framboise" value="0">
-		<input class="formcomnbr" type="txt" id="pamplemousse" name="pamplemousse" value="0">
-		<input class="formcomnbr" type="txt" id="fraise" name="fraise" value="0">
-	</div>
-	
 	<div class="formulairedeuxcolonnes">
 		<article>
 			<h3>Vos informations</h3>
-			<p><label>Nom<br />
+			<p><label>Nom</p><p>
 		<span><input size="40" class= "formulairecommande2" value="" type="text" name="nom-famille" id="nomformcomm" /></span>
 			</p>
-			<p><label>Prénom<br />
+			<p><label>Prénom</p><p>
 			<span><input size="40" class= "formulairecommande2" value="" type="text" name="prenom" id="nomformcomm" /></span>
 			</p>
-			<p><label>E-mail<br />
+			<p><label>E-mail</p><p>
 			<span><input size="40" class= "formulairecommande2" value="" type="text" name="email" id="nomformcomm" /></span>
 			</p>
 		</article>
 		<article>
 			<h3>Livraison</h3>
-			<p><label>Adresse de livraison<br />
+			<p><label>Adresse de livraison</p><p>
 			<span><input size="40" class= "formulairecommande2" value="" type="text" name="nomderue" id="nomformcomm" /></span>
 			</p>
-			<p><label>Code postal<br />
+			<p><label>Code postal</p><p>
 			<span><input size="40" class= "formulairecommande2" value="" type="text" name="codepostal" id="nomformcomm" /></span>
 			</p>
-			<p><label>Ville<br />
+			<p><label>Ville</p><p>
 			<span><input size="40" class= "formulairecommande2" value="" type="text" name="ville" id="nomformcomm" /></span>
 			</p>
 	</div>
 	<div class="boutonenvoyercommande">
-			<p><input id="IDEnvoiCommande" type="submit" value="Envoyer" />
+			<p><input id="IDEnvoiCommande" tpye="submit" value="Commander" />
 			</p>
 	</article>
 	</div>
-	<div class="wpcf7-response-output" aria-hidden="true"></div>
 	</form>
-	<?php
-		if (isset($_POST['message'])) {
-			$retour = mail('destinataire@free.fr', 'Envoi depuis la page Contact', $_POST['message'], 'From: webmaster@monsite.fr' . "\r\n" . 'Reply-to: ' . $_POST['email']);
-			if($retour)
-				echo '<p>Votre message a bien été envoyé.</p>';
-		}
-		?>
 	<?php
 		}
 	
 	// fin formulaire
 	
 	
-	// debut affichage a gauche sur elementor    
-		public function form( $instance ) {
-			if ( isset( $instance[ 'title' ] ) )
-			$title = $instance[ 'title' ];
-			else
-			$title = __( 'Default Title', 'hstngr_widget_domain' );
-	?>
-		<p>administration</p>
-		<p>
-		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
-		</p>
-	
-	<?php
-		}
-	
-		public function update( $new_instance, $old_instance ) {
-			$instance = array();
-			$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-		return $instance;
-		}
 		
 		}
 	
