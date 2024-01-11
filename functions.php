@@ -72,7 +72,6 @@ function wpc_wp_nav_menu_args( $args = '' ) {
 
 
 
-
 	function hstngr_register_widget() {
 		register_widget( 'hstngr_widget' );
 		}
@@ -96,12 +95,11 @@ function wpc_wp_nav_menu_args( $args = '' ) {
 	
 	//    extract($args);
 	
-	// Paramètres du widget – Je récupère les 4 articles les plus récents
+	// Paramètres du widget – Je récupère les articles les plus récents
 		$args = array('posts_per_page' => -1);
 	
 	// Récupération des articles dans la variable $lastposts
 		$lastposts = get_posts($args);
-	//    $thumburl = get_the_post_thumbnail($post->ID);
 	
 	
 	
@@ -122,36 +120,40 @@ function wpc_wp_nav_menu_args( $args = '' ) {
 	?>
 	
 	
+	<hr>
+	
 	<div class="formulairedeuxcolonnes">
-		<article>
+	
+		<article class="colonne1">
 			<h3>Vos informations</h3>
-			<p><label>Nom</p><p>
-		<span><input size="40" class= "formulairecommande2" value="" type="text" name="nom-famille" id="nomformcomm" /></span>
-			</p>
-			<p><label>Prénom</p><p>
-			<span><input size="40" class= "formulairecommande2" value="" type="text" name="prenom" id="nomformcomm" /></span>
-			</p>
-			<p><label>E-mail</p><p>
-			<span><input size="40" class= "formulairecommande2" value="" type="text" name="email" id="nomformcomm" /></span>
-			</p>
+				<div><label for="nom-famille">Nom</label>
+					<input class= "formulairecommande2" value="" type="text" name="nom-famille" id="nomformcomm" />
+				</div>
+				<div><label for="prenom">Prénom</label>
+					<input class= "formulairecommande2" value="" type="text" name="prenom" id="nomformcomm" />
+				</div>
+				<div><label for="email">E-mail</label>
+					<input class= "formulairecommande2" value="" type="text" name="email" id="nomformcomm" />
+				</div>
 		</article>
-		<article>
+		<article class="colonne2">
 			<h3>Livraison</h3>
-			<p><label>Adresse de livraison</p><p>
-			<span><input size="40" class= "formulairecommande2" value="" type="text" name="nomderue" id="nomformcomm" /></span>
-			</p>
-			<p><label>Code postal</p><p>
-			<span><input size="40" class= "formulairecommande2" value="" type="text" name="codepostal" id="nomformcomm" /></span>
-			</p>
-			<p><label>Ville</p><p>
-			<span><input size="40" class= "formulairecommande2" value="" type="text" name="ville" id="nomformcomm" /></span>
-			</p>
+				<div><label for="adresse-livraison">Adresse de livraison</label>
+					<input class= "formulairecommande2" value="" type="text" name="nomderue" id="nomformcomm" />
+				</div>
+				<div><label for="code-postal">Code postal</label>
+					<input class= "formulairecommande2" value="" type="text" name="codepostal" id="nomformcomm" />
+				</div>
+				<div><label for="ville">Ville</label>
+					<input class= "formulairecommande2" value="" type="text" name="ville" id="nomformcomm" />
+				</div>
 	</div>
 	<div class="boutonenvoyercommande">
 			<p><input id="IDEnvoiCommande" tpye="submit" value="Commander" />
 			</p>
 	</article>
 	</div>
+	
 	</form>
 	<?php
 		}
