@@ -57,12 +57,12 @@ add_action( 'wp_enqueue_scripts', 'hello_elementor_child_scripts_styles', 20 );
 function wpc_wp_nav_menu_args( $args = '' ) {
 	if( is_user_logged_in()) { 
 		if( 'menu-1' == $args['theme_location'] ) { 
-		//top_navigation is specific to Avada in my case
+		
 			$args['menu'] = 'connecte';
 		}
 	} else { 
 		if( 'menu-1' == $args['theme_location'] ) { 
-		//again, top_navigation is specific to Avada in my case
+		
 			$args['menu'] = 'visiteur';
 		}
 	} 
@@ -107,13 +107,13 @@ function wpc_wp_nav_menu_args( $args = '' ) {
 	
 	echo '<form id="order-form" action="mailto:planty.drinks@gmail.com" method="post" enctype="text/plain"><div class="productimage">';
 	foreach ( $lastposts as $post ) : setup_postdata($post); ?>
-	<article>
+	<div>
 		<div class="product-info">
 			<?php echo get_the_post_thumbnail($post->ID); ?>
 			<div><h3><?php echo $post->post_title; ?> </h3></div>
 		</div>
 	<input class="formcomnbr" type="number" name="<?php echo $post->post_name; ?>" value="0">
-	</article>
+	</div>
 	<?php endforeach;
 	echo '</div>';   
 	
@@ -126,32 +126,34 @@ function wpc_wp_nav_menu_args( $args = '' ) {
 	
 		<article class="colonne1">
 			<h3>Vos informations</h3>
-				<div><label for="nom-famille">Nom</label>
-					<input class= "formulairecommande2" value="" type="text" name="nom-famille" id="nomformcomm" />
-				</div>
-				<div><label for="prenom">Prénom</label>
-					<input class= "formulairecommande2" value="" type="text" name="prenom" id="nomformcomm" />
-				</div>
-				<div><label for="email">E-mail</label>
-					<input class= "formulairecommande2" value="" type="text" name="email" id="nomformcomm" />
-				</div>
+			<div><label for="nom-famille">Nom</label>
+				<input class= "formulairecommande2" value="" type="text" name="nom-famille" id="nomformcomm" />
+			</div>
+			<div><label for="prenom">Prénom</label>
+				<input class= "formulairecommande2" value="" type="text" name="prenom" id="nomformcomm" />
+			</div>
+			<div><label for="email">E-mail</label>
+				<input class= "formulairecommande2" value="" type="text" name="email" id="nomformcomm" />
+			</div>
 		</article>
 		<article class="colonne2">
 			<h3>Livraison</h3>
-				<div><label for="adresse-livraison">Adresse de livraison</label>
-					<input class= "formulairecommande2" value="" type="text" name="nomderue" id="nomformcomm" />
-				</div>
-				<div><label for="code-postal">Code postal</label>
-					<input class= "formulairecommande2" value="" type="text" name="codepostal" id="nomformcomm" />
-				</div>
-				<div><label for="ville">Ville</label>
+			<div><label for="adresse-livraison">Adresse de livraison</label>
+				<input class= "formulairecommande2" value="" type="text" name="nomderue" id="nomformcomm" />
+			</div>
+			<div><label for="code-postal">Code postal</label>
+				<input class= "formulairecommande2" value="" type="text" name="codepostal" id="nomformcomm" />
+			</div>
+			<div><label for="ville">Ville</label>
 					<input class= "formulairecommande2" value="" type="text" name="ville" id="nomformcomm" />
+			</div>
+		</article>
+		<article class="boutonenbas">
+				<div class="boutonenvoyercommande">
+				<p><input id="IDEnvoiCommande" tpye="submit" value="Commander" />
+				</p>
 				</div>
-	</div>
-	<div class="boutonenvoyercommande">
-			<p><input id="IDEnvoiCommande" tpye="submit" value="Commander" />
-			</p>
-	</article>
+		</article>
 	</div>
 	
 	</form>

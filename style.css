@@ -116,8 +116,6 @@ Tags: flexible-header, custom-colors, custom-menu, custom-logo, editor-style, fe
 	padding-left: 25px;
 }
 
-
-
 #nomformcomm {
 	box-sizing: border-box;
 	height: 71px;
@@ -172,7 +170,7 @@ Tags: flexible-header, custom-colors, custom-menu, custom-logo, editor-style, fe
 	text-align: center;
 }
 
-#order-form .productimage article {
+#order-form .productimage div {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -211,8 +209,10 @@ input[type=number]::-webkit-outer-spin-button {
 
 #order-form .formulairedeuxcolonnes {
 	display: flex;
+	margin-top: 50px;
 	margin-top: 80px;
 	border-left: 5px;
+	flex-wrap: wrap;
 }
 
 
@@ -222,6 +222,10 @@ input[type=number]::-webkit-outer-spin-button {
 	width: 50%;
 	flex-wrap: wrap;
 
+}
+
+#order-form .formulairedeuxcolonnes .boutonenbas {
+	width: 100%;
 }
 
 #order-form .formulairedeuxcolonnes label {
@@ -235,6 +239,10 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 
+#order-form .formulairedeuxcolonnes span {
+	margin-top: 20px;
+}
+
 
 @media (max-width: 1024px) {
 
@@ -245,8 +253,6 @@ input[type=number]::-webkit-outer-spin-button {
 	#order-form .productimage article {
 		max-width: 170px;
 	}
-
-
 
 }
 
@@ -290,10 +296,6 @@ input[type=number]::-webkit-outer-spin-button {
 	#nomformcomm {
 		width: 300px;
 	}
-
-	#order-form .v-line {
-		display: none;
-	}
 	
 	.colonne1 {
 		padding-right: 0px;
@@ -305,5 +307,4 @@ input[type=number]::-webkit-outer-spin-button {
 		margin-top: 30px;
 	}
 	
-
 }
